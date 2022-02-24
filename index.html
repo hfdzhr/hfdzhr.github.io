@@ -74,22 +74,26 @@
             </div>
         </div>
     </div>
-    <!-- AOS Script -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <div class="teks text-center pt-lg-5" id="text">
+    </div>
+</body>
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 
-    <!-- Tilt JS -->
-    <script type="text/javascript" src="vanilla-tilt.min.js"></script>
-    <script>
-        VanillaTilt.init(document.querySelectorAll(".card"), {
-            max: 25,
-            speed: 400,
-            reverse: true,
-            scale: 1.1,
-        });
-    </script>
+<!-- Tilt JS -->
+<script type="text/javascript" src="vanilla-tilt.min.js">
+</script>
+<script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 25,
+        speed: 400,
+        reverse: true,
+        scale: 1.1,
+    });
+</script>
 </body>
 
 <!-- GSAP Animation -->
@@ -117,6 +121,13 @@
         y: -50,
         opacity: 0,
         ease: 'power4'
+    });
+    gsap.from('#text', {
+        duration: 1.1,
+        y: 50,
+        opacity: 0,
+        ease: 'power4',
+        delay: 0.8
     });
 </script>
 
@@ -191,16 +202,12 @@
         loop: 60,
 
     });
-</script>
-<style>
-    .card {
-        transform-style: preserve-3d;
-        transform: perspective(1000px);
-    }
 
-    .card-h1 {
-        transform: translateZ(20px)
-    }
-</style>
+
+    text = document.getElementById('text')
+    text.innerHTML = "Made by <a href='https://github.com/HafidAlAzhar'>Hafid Al Azhar</a>"
+    text.style.fontWeight = 'bold';
+</script>
+
 
 </html>
