@@ -7,18 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page - Bank Jago</title>
     <link rel="icon" href="https://www.jago.com/favicon/favicon-32x32.png">
+    <!-- Sweetalert JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <!-- Bootsrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- AOS JS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
-    <h1 align="center" style="padding-top: 1cm;">Halo <span class="type"></span></h1>
+    <h1 align="center" style="padding-top: 1cm;" id="judul">Halo <span class="type"></span></h1>
     <div class="container pt-5">
         <!-- Deposit -->
         <div class="row">
             <div class="col">
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card1">
                     <div class="card-body">
                         <h1 class="card-title">Deposit</h1>
                         <h2 class="card-text">Rp.<b id="deposit"></b></h2>
@@ -29,7 +33,7 @@
 
             <!-- Penarikan -->
             <div class="col">
-                <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+                <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;" id="card2">
                     <div class="card-body">
                         <h1 class="card-title">Penarikan</h1>
                         <h2 class="card-text">Rp.<b id="penarikan"></b></h2>
@@ -40,7 +44,7 @@
 
             <!-- Tabungan -->
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;" id="card3">
                     <div class="card-body">
                         <h1 class="card-title">Tabungan</h1>
                         <h2 class="card-text">Rp.<b id="tabungan"></b></h2>
@@ -52,22 +56,71 @@
             <!-- Input Deposit -->
             <div class="row pt-5">
                 <div class="col">
-                    <div class="input-group input-group-md mb-3">
+                    <div class="input-group input-group-md mb-3" data-aos="fade-up" data-aos-duration="1000">
                         <span class="input-group-text">Rp.</span>
                         <input type="number" class="form-control" placeholder="Deposit" id="indep">
                     </div>
-                    <input type="button" value="Deposit" class="btn btn-success" onclick="depo()">
+                    <input type="button" value="Deposit" class="btn btn-success" onclick="depo()" data-aos="fade-up"
+                        data-aos-duration="1000">
                 </div>
                 <div class="col">
-                    <div class="input-group input-group-md mb-3">
+                    <div class="input-group input-group-md mb-3" data-aos="fade-up" data-aos-duration="1000">
                         <span class="input-group-text">Rp.</span>
                         <input type="number" class="form-control" placeholder="Penarikan" id="intar">
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="tari()">Tarik</button>
+                    <button type="button" class="btn btn-danger" onclick="tari()" data-aos="fade-up"
+                        data-aos-duration="1000">Tarik</button>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Tilt JS -->
+    <script type="text/javascript" src="vanilla-tilt.min.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 25,
+            speed: 400,
+            reverse: true,
+            scale: 1.1,
+        });
+    </script>
 </body>
+
+<!-- GSAP Animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+    gsap.from('#card1', {
+        duration: 1.5,
+        x: -50,
+        opacity: 0,
+        ease: 'back'
+    });
+    gsap.from('#card2', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+    });
+    gsap.from('#card3', {
+        duration: 1.5,
+        x: 50,
+        opacity: 0,
+        ease: 'back'
+    });
+    gsap.from('#judul', {
+        duration: 1.1,
+        y: -50,
+        opacity: 0,
+        ease: 'power4'
+    });
+</script>
+
+<!-- Typed JS -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
     const indep = document.getElementById("indep");
@@ -78,10 +131,19 @@
 
     // Deposit
     function depo() {
-        deposit.push(Number(indep.value));
-        total += (Number(indep.value));
-        document.getElementById("deposit").innerHTML = indep.value;
-        document.getElementById("tabungan").innerHTML = total
+        if (indep.value <= 0) {
+            swal({
+                title: "Hmm !",
+                text: `Kamu belum isi jumlahnya, silahkan isi dulu !`,
+                icon: "error",
+                button: "Kembali",
+            });
+        } else {
+            deposit.push(Number(indep.value));
+            total += (Number(indep.value));
+            document.getElementById("deposit").innerHTML = indep.value;
+            document.getElementById("tabungan").innerHTML = total
+        }
     }
 
     // Penarikan & Sweetalert
@@ -130,5 +192,15 @@
 
     });
 </script>
+<style>
+    .card {
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+    }
+
+    .card-h1 {
+        transform: translateZ(20px)
+    }
+</style>
 
 </html>
