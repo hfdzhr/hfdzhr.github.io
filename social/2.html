@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Credir Farm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-image: url(./img/bendera.svg);">
+    <center style="padding: 3cm; color: yellow;">
+        <img src="https://i.kym-cdn.com/photos/images/original/002/229/102/5c5.jpg" alt="" width="20%" style="padding-right: 3cm;">
+        <h1>social credit farm</h1><br><br>
+        <h1>Berapa banyak anak, dalam 1 keluarga ?</h1><br>
+        <form action="">
+            <input type="radio" id="j1" name="age" value="Benar">
+            <label for="age1">13</label><br>
+            <input type="radio" id="j2" name="age" value="Benar">
+            <label for="age2">2</label><br>
+            <input type="radio" id="j3" name="age" value="Benar">
+            <label for="age2">1</label><br>
+            <input type="radio" id="j4" name="age" value="Benar">
+            <label for="age2">4 Kembar</label>
+            <br><br>
+        </form>
+        <input type="submit" class="btn btn-warning btn-block btn-lg" value="Cek" onclick="kirim()">
+    </center>
+</body>
+<script src="../cafe/package/dist/sweetalert2.all.min.js"></script>
+<script>
+    function kirim() {
+        if (document.getElementById('j3').checked) {
+            Swal.fire({
+                title: '正确的!',
+                text: 'Social Credit +15',
+                imageUrl: 'https://i.kym-cdn.com/photos/images/original/002/216/986/dbe.jpg',
+                imageWidth: 608,
+                imageHeight: 380,
+                imageAlt: 'Social Credit +15',
+            }).then(function () {
+                window.location = "3.html";
+            });
+        } else {
+            Swal.fire({
+                title: '错误的!',
+                text: 'Social Credit -999999',
+                imageUrl: 'https://i.redd.it/knx19jp9mur71.png',
+                imageWidth: 608,
+                imageHeight: 380,
+                imageAlt: 'Social Credit +15',
+            });
+        }
+    }
+</script>
+<style>
+    h1 {
+        font-family: 'Libre Baskerville', serif;
+    }
+</style>
+
+</html>
