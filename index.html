@@ -74,7 +74,9 @@
             </div>
         </div>
     </div>
-    <div class="teks text-center pt-lg-5" id="text">
+    <div class="teks text-center pt-5">
+        <b id="nama">Made By</b>
+        <a href="https://github.com/hafidalazhar25/hafidalazhar25.github.io" id="link">Hafid Al Azhar</a>
     </div>
 </body>
 <!-- AOS Script -->
@@ -122,12 +124,19 @@
         opacity: 0,
         ease: 'power4'
     });
-    gsap.from('#text', {
+    gsap.from('#nama', {
         duration: 1.1,
         y: 50,
         opacity: 0,
         ease: 'power4',
         delay: 0.8
+    });
+    gsap.from('#link', {
+        duration: 1.1,
+        y: 50,
+        opacity: 0,
+        ease: 'power4',
+        delay: 1
     });
 </script>
 
@@ -202,12 +211,16 @@
         loop: 60,
 
     });
-
-
-    text = document.getElementById('text')
-    text.innerHTML = "Made by <a href='https://github.com/HafidAlAzhar'>Hafid Al Azhar</a>"
-    text.style.fontWeight = 'bold';
 </script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Yantramanav&display=swap');
+
+    #link {
+        color: black;
+        font-weight: bold;
+        font-family: 'Yantramanav', sans-serif;
+    }
+</style>
 
 
 </html>
