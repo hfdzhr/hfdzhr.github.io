@@ -18,6 +18,9 @@
 
 <body>
     <h1 align="center" style="padding-top: 1cm;" id="judul">Halo <span class="type"></span></h1>
+    <div class="comi" id="comi">
+        <img src="./tikus.png" alt="" srcset="">
+    </div>
     <div class="container pt-5">
         <!-- Deposit -->
         <div class="row">
@@ -138,6 +141,24 @@
         ease: 'power4',
         delay: 1.5
     });
+
+    tl = gsap.timeline({
+        repeat: 10,
+        repeatDelay: 4
+    });
+    tl.from('#comi', {
+        duration: 1,
+        x: 50,
+        opacity: 0,
+        ease: 'power4',
+        delay: 7
+    });
+    tl.to('#comi', {
+        duration: 1,
+        x: 50,
+        opacity: 0,
+        ease: 'power4.out'
+    }, '+=15');
 </script>
 
 <!-- Typed JS -->
@@ -154,9 +175,9 @@
         if (indep.value <= 0) {
             swal({
                 title: "Hmm !",
-                text: `Kamu belum isi jumlahnya, silahkan isi dulu !`,
+                text: `Kamu belum isi jumlahnya, silahkan isi dulu ya :D`,
                 icon: "error",
-                button: "Kembali",
+                button: "Isi Dulu",
             });
         } else {
             deposit.push(Number(indep.value));
@@ -172,16 +193,16 @@
             kurang = intar.value - total
             swal({
                 title: "Oops..!",
-                text: `Uang mu sepertinya kurang Rp.${kurang}`,
+                text: `Uang mu kayaknya kurang Rp.${kurang}`,
                 icon: "warning",
-                button: "Kembali",
+                button: "Deposit Dulu",
             });
         } else if (intar.value <= 0) {
             swal({
                 title: "Hmm !",
-                text: `Kamu belum isi jumlahnya, silahkan isi dulu !`,
+                text: `Kamu belum isi jumlahnya, silahkan isi dulu ya :D`,
                 icon: "error",
-                button: "Kembali",
+                button: "Isi Dulu",
             });
         } else {
             tarik.push(Number(intar.value));
@@ -209,7 +230,17 @@
         typeSpeed: 70,
         backSpeed: 60,
         loop: 60,
+    });
 
+    // Comi
+    img = document.getElementById('comi');
+    img.addEventListener('click', function () {
+        swal({
+            title: "Heyy !",
+            icon: 'https://emojigraph.org/media/google/angry-face_1f620.png',
+            text: `Comi-nya jangan di ganggu dia lagi merhatiin kamu.`,
+            button: "Awas kamu!",
+        });
     });
 </script>
 <style>
@@ -219,6 +250,14 @@
         color: black;
         font-weight: bold;
         font-family: 'Yantramanav', sans-serif;
+    }
+
+
+    .comi img {
+        float: right;
+        position: relative;
+        top: 120px;
+        width: 5%;
     }
 </style>
 
