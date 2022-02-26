@@ -13,29 +13,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-image: url(./img/bendera.svg);">
+<body style="background-image: url(../img/bendera.svg);">
     <center style="padding: 3cm; color: yellow;">
-        <img src="https://i.redd.it/a1zcxisgjls71.png" alt="" width="20%">
+        <img src="https://c.tenor.com/3db9KtRaUw8AAAAS/super-idol.gif" width="10%">
         <h1>social credit farm</h1><br><br>
-        <h1>Negara terbaik di dunia ?</h1><br>
+        <img src="https://st4.depositphotos.com/11351024/25064/i/450/depositphotos_250646450-stock-photo-taiwan-national-flag-blowing-in.jpg"
+            alt="" srcset="" width="70&" class="rounded float-start"><br>
+        <h1>Apakah taiwan sebuah negara ?</h1>
         <form action="">
             <input type="radio" id="j1" name="age" value="Benar">
-            <label for="age1">Amerika</label><br>
+            <label for="age1">Iya sebuah negara</label><br>
             <input type="radio" id="j2" name="age" value="Benar">
-            <label for="age2">Prancis</label><br>
-            <input type="radio" id="j3" name="age" value="Benar">
-            <label for="age2">Belanda</label><br>
-            <input type="radio" id="j4" name="age" value="Benar">
-            <label for="age2">China</label>
-            <br><br>
+            <label for="age2">Bukan sebuah negara</label><br><br>
         </form>
         <input type="submit" class="btn btn-warning btn-block btn-lg" value="Cek" onclick="kirim()">
     </center>
 </body>
-<script src="../package/dist/sweetalert2.all.min.js"></script>
+<script src="../sweetalert/dist/sweetalert2.all.min.js"></script>
 <script>
     function kirim() {
-        if (document.getElementById('j4').checked) {
+        if (document.getElementById('j2').checked) {
             Swal.fire({
                 title: '正确的!',
                 text: 'Social Credit +15',
@@ -44,7 +41,7 @@
                 imageHeight: 380,
                 imageAlt: 'Social Credit +15',
             }).then(function () {
-                window.location = "stop.html";
+                window.location = "./2.html";
             });
         } else {
             Swal.fire({

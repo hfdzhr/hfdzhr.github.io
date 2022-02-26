@@ -13,30 +13,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-image: url(./img/bendera.svg);">
+<body style="background-image: url(../img/bendera.svg);">
     <center style="padding: 3cm; color: yellow;">
-        <img src="https://i.kym-cdn.com/photos/images/original/002/229/102/5c5.jpg" alt="" width="20%"
-            style="padding-right: 3cm;">
+        <img src="https://i.redd.it/a1zcxisgjls71.png" alt="" width="20%">
         <h1>social credit farm</h1><br><br>
-        <h1>Berapa banyak anak, dalam 1 keluarga ?</h1><br>
+        <h1>Negara terbaik di dunia ?</h1><br>
         <form action="">
             <input type="radio" id="j1" name="age" value="Benar">
-            <label for="age1">13</label><br>
+            <label for="age1">Amerika</label><br>
             <input type="radio" id="j2" name="age" value="Benar">
-            <label for="age2">2</label><br>
+            <label for="age2">Prancis</label><br>
             <input type="radio" id="j3" name="age" value="Benar">
-            <label for="age2">1</label><br>
+            <label for="age2">Belanda</label><br>
             <input type="radio" id="j4" name="age" value="Benar">
-            <label for="age2">4 Kembar</label>
+            <label for="age2">China</label>
             <br><br>
         </form>
         <input type="submit" class="btn btn-warning btn-block btn-lg" value="Cek" onclick="kirim()">
     </center>
 </body>
-<script src="../package/dist/sweetalert2.all.min.js"></script>
+<script src="../sweetalert/dist/sweetalert2.all.min.js"></script>
 <script>
     function kirim() {
-        if (document.getElementById('j3').checked) {
+        if (document.getElementById('j4').checked) {
             Swal.fire({
                 title: '正确的!',
                 text: 'Social Credit +15',
@@ -45,7 +44,7 @@
                 imageHeight: 380,
                 imageAlt: 'Social Credit +15',
             }).then(function () {
-                window.location = "3.html";
+                window.location = "stop.html";
             });
         } else {
             Swal.fire({

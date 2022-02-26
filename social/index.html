@@ -31,7 +31,7 @@
         <input type="submit" class="btn btn-warning btn-block btn-lg" value="Cek" onclick="kirim()">
     </center>
 </body>
-<script src="../package/dist/sweetalert2.all.min.js"></script>
+<script src="./sweetalert/dist/sweetalert2.all.min.js"></script>
 <script>
     function kirim() {
         if (document.getElementById('j1').checked) {
@@ -43,7 +43,7 @@
                 imageHeight: 380,
                 imageAlt: 'Social Credit +15',
             }).then(function () {
-                window.location = "1.html";
+                window.location = "./public/1.html";
             });
         } else {
             Swal.fire({
@@ -54,7 +54,7 @@
                 imageHeight: 380,
                 imageAlt: 'Social Credit +15',
             }).then(function () {
-                window.location = "1.html";
+                window.location = "./public/1.html";
             });
         }
     }
