@@ -25,7 +25,7 @@
         <!-- Deposit -->
         <div class="row">
             <div class="col">
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" id="card1">
+                <div class="card text-white bg-primary mb-3 kartu" style="max-width: 18rem;" id="card1">
                     <div class="card-body">
                         <h1 class="card-title">Deposit</h1>
                         <h2 class="card-text">Rp.<b id="deposit"></b></h2>
@@ -36,7 +36,7 @@
 
             <!-- Penarikan -->
             <div class="col">
-                <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;" id="card2">
+                <div class="card text-dark bg-warning mb-3 kartu" style="max-width: 18rem;" id="card2">
                     <div class="card-body">
                         <h1 class="card-title">Penarikan</h1>
                         <h2 class="card-text">Rp.<b id="penarikan"></b></h2>
@@ -47,7 +47,7 @@
 
             <!-- Tabungan -->
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 18rem;" id="card3">
+                <div class="card text-white bg-success mb-3 kartu" style="max-width: 18rem;" id="card3">
                     <div class="card-body">
                         <h1 class="card-title">Tabungan</h1>
                         <h2 class="card-text">Rp.<b id="tabungan"></b></h2>
@@ -97,6 +97,7 @@
         speed: 400,
         reverse: true,
         scale: 1.1,
+        gyroscope: true,
     });
 </script>
 </body>
@@ -148,14 +149,14 @@
     });
     tl.from('#comi', {
         duration: 1,
-        x: 50,
+        x: 70,
         opacity: 0,
         ease: 'power4',
         delay: 7
     });
     tl.to('#comi', {
         duration: 1,
-        x: 50,
+        x: 70,
         opacity: 0,
         ease: 'power4.out'
     }, '+=15');
@@ -239,7 +240,11 @@
             title: "Heyy !",
             icon: 'https://emojigraph.org/media/google/angry-face_1f620.png',
             text: `Comi-nya jangan di ganggu dia lagi merhatiin kamu.`,
-            button: "Awas kamu!",
+            button: {
+                confirm: true,
+                text: 'Awas Kamu',
+                className: 'button1'
+            },
         });
     });
 </script>
@@ -258,6 +263,32 @@
         position: relative;
         top: 120px;
         width: 5%;
+    }
+
+    .btn {
+        border-radius: 90px 90px 90px 90px;
+    }
+
+    .btn-success:hover {
+        color: #198754;
+        background-color: white;
+        box-shadow: 0px 8px 20px rgba(46, 229, 157, 0.4);
+
+    }
+
+    .btn-danger:hover {
+        color: #DC3545;
+        background-color: white;
+        box-shadow: 0px 8px 20px rgba(255, 128, 128, 0.8);
+    }
+
+    .swal-button {
+        padding: 7px 19px;
+        border-radius: 10px;
+        background-color: #4962B3;
+        font-size: 12px;
+        border: 1px solid #3e549a;
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
     }
 </style>
 
