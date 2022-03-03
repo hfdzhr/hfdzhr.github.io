@@ -102,10 +102,13 @@
 </script>
 <script>
     VanillaTilt.init(document.querySelectorAll(".card"), {
-        max: 25,
+        max: 18,
+        glare: true,
+        "max-glare": 0.5,
         speed: 400,
         scale: 1.1,
         gyroscope: true,
+        reverse: true,
     });
 </script>
 </body>
@@ -283,7 +286,7 @@
                 element: document.getElementById('card3'),
                 intro: "Dan, Ini adalah jumlah uang yang kamu tabungkan 💰 "
             }, {
-                intro: "Selamat mencoba 🙂 <br> Budayakan Menabung 👌"
+                intro: "Selamat mencoba 🙂 <br> Budayakan Menabung OKE!! 👌"
             }]
         }).start();
     }
