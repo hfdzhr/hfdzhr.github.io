@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="startTime()">
+    <div id="txt" class="clock"></div>
     <div class="banner-area">
         <h2>$<span class="type"></span></h2>
     </div> <br>
@@ -73,6 +74,17 @@
             color: white;
             font-size: 4.5em;
         }
+
+        .clock {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: white;
+            font-size: 40px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 6px;
+        }
     </style>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -96,6 +108,25 @@
         loop: 60,
 
     });
+</script>
+<script>
+    function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }; // add zero in front of numbers < 10
+        return i;
+    }
 </script>
 
 </html>
