@@ -22,9 +22,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 
-<body>
+<body onload="startTime()">
     <!-- Button Intro JS -->
     <input type="button" value="Tutorial" class="btn btn-primary m-3 btn-tutorial " onclick="tutorial()" id="tutorial">
+    <div class="clock float-sm-end" id="jam"></div>
     <h1 align="center" style="padding-top: 0.6cm;" id="judul">Halo <span class="type"></span></h1>
     <div class="comi" id="comi">
         <img src="./tikus.png" alt="" srcset="">
@@ -151,6 +152,12 @@
     gsap.from('#tutorial', {
         duration: 1.1,
         x: -50,
+        opacity: 0,
+        ease: 'power4'
+    });
+    gsap.from('#jam', {
+        duration: 1.1,
+        x: 50,
         opacity: 0,
         ease: 'power4'
     });
@@ -303,6 +310,28 @@
         }).start();
     }
 </script>
+
+
+<!-- Clock -->
+<script>
+    function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('jam').innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }; // add zero in front of numbers < 10
+        return i;
+    }
+</script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Yantramanav&display=swap');
 
@@ -358,6 +387,16 @@
         color: white;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 500;
+    }
+
+    .clock {
+        color: black;
+        font-weight: 500;
+        font-size: 19px;
+        font-family: 'Poppins', sans-serif;
+        /* letter-spacing: 1px; */
+        margin: 14px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 </style>
 
