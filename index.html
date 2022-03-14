@@ -17,26 +17,23 @@
     <div class="banner-area">
         <h2>$<span class="type"></span></h2>
     </div> <br>
-    <div class="img">
-        <p align="center">
-            <a href="https://www.facebook.com/hafidal.azhar.9" rel="nofollow">
-                <img src="./logo/facebook_logo.png" alt="Facebook" height="40" style="margin:4px">
+    <div class="link">
+        <div class="logo" align="center">
+            <a href="https://www.facebook.com/hafidal.azhar.9/">
+                <img src="https://img.icons8.com/ios-filled/70/ffffff/facebook-new.png" alt="Facebook" srcset="" />
             </a>
-
-            <a href="https://instagram.com/hafidalazhr/" rel="nofollow">
-                <img src="./logo/instagram_logo.png" alt="Instagram" height="40" style="margin:4px">
+            <a href="https://github.com/hafidalazhar25">
+                <img src="https://img.icons8.com/ios-glyphs/74/ffffff/github.png" alt="Github" srcset="" />
             </a>
-
-            <a href="https://twitter.com/hafidalazhar" rel="nofollow">
-                <img src="./logo/twitter_logo.png" alt="Twitter" height="40" style="margin:4px">
+            <a href="https://www.instagram.com/hafidalazhr/">
+                <img src="https://img.icons8.com/windows/75/ffffff/instagram-new.png" alt="Instagram" srcset="" />
             </a>
-
-            <a href="https://github.com/hafidalazhar25" rel="nofollow">
-                <img src="./logo/github_logo.png" alt="Github" height="40" style="margin:4px">
+            <a href="https://twitter.com/hafidalazhar">
+                <img src="https://img.icons8.com/ios-glyphs/75/ffffff/twitter--v1.png" alt="Twitter" srcset="" />
             </a>
-
-        </p>
+        </div>
     </div>
+
     <style>
         body {
             margin: 0;
@@ -61,18 +58,8 @@
             font-size: 4.5em;
         }
 
-        .img p {
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            font-size: 4.5em;
+        .link {
+            padding-top: 11cm;
         }
 
         .clock {
@@ -108,6 +95,29 @@
         loop: 60,
 
     });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<!-- Interact JS Code -->
+<script>
+    const position = {
+        x: 0,
+        y: 0
+    }
+
+    interact('.clock').draggable({
+        listeners: {
+            start(event) {
+                console.log(event.type, event.target)
+            },
+            move(event) {
+                position.x += event.dx
+                position.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position.x}px, ${position.y}px)`
+            },
+        }
+    })
 </script>
 <script>
     function startTime() {
