@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon API | Hafid</title>
+</head>
+
+<body>
+    <center>
+        <h1>Pokemon API</h1>
+    </center>
+    <div class="columns">
+        <ul id="PokemonList">
+            <h2>List Pokemon</h2>
+        </ul>
+
+        <div id="detail">
+            <h2>Detail Pokemon</h2>
+            <div class="" id="details"></div>
+        </div>
+    </div>
+
+
+    <center>
+        <h3>Data API Dari <a href="https://pokeapi.co/">Pokeapi.co</a></h3>
+    </center>
+
+</body>
+<!-- Style CSS -->
+<style>
+    .columns {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #detail {
+        padding-top: 30px;
+    }
+</style>
+
+<!-- Script JS -->
+<script>
+    fetch('https://pokeapi.co/api/v2/pokemon')
+        .then(
+            // Response Status
+            function (response) {
+                if (response.status != 200) {
+                    console.log('Ooops Error Code ' + response.status)
+                    return
+                }
+
+                // Data Pokemon
+                response.json().then(function (data) {
+                    const pokemons = data.results
+                    pokemons.forEach(pokemon => {
+                        document.getElementById('PokemonList')
+                            .insertAdjacentHTML('beforeend',
+                                `<li onclick='detail("${pokemon.url}")'> ${pokemon.name} </li>`
+                            )
+                    });
+                })
+            }
+        )
+
+        .catch(function (err) {
+            console.log(err)
+        })
+
+    function detail(url) {
+        fetch(url).then(function (response) {
+            response.json().then(function (pokemon) {
+
+                document.getElementById('details').innerHTML = ""
+
+                document.getElementById('details')
+                    .insertAdjacentHTML('beforeend',
+                        `
+                        <h3> ${pokemon.name} </h3>
+                        <img src="${pokemon.sprites.front_default}">
+                        <img src="${pokemon.sprites.back_default}">
+                        <p> Tinggi: ${pokemon.height}cm/m </p>
+                        <p> Berat: ${pokemon.weight}kg </p>
+                        <p> Kemampuan: ${pokemon.abilities[0].ability.name} </p>
+                        <p> Pergerakan: ${pokemon.moves[0].move.name} </p>
+                        `
+                    )
+            })
+        })
+    }
+</script>
+
+</html>
