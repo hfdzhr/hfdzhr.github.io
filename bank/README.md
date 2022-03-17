@@ -1,5 +1,5 @@
 ## Tampilan Project
-Untuk tampilan project kalian dapat mengunjungi : https://hafidalazhar25.github.io/bank
+Untuk tampilan project kalian dapat mengunjungi : https://hafid.xyz/bank
 
 ## library JS :
 * Typed JS
