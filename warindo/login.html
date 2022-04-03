@@ -1,27 +1,104 @@
-z
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Warindo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <center>
+
+        <!-- Login HTML -->
+        <div class="container">
+            <div class="login text-center">
+                <h2>Login</h1>
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" placeholder=" hafid@gmail.com  "> <br>
+                    <label for="password">Password :</label>
+                    <input type="password" id="pw" placeholder=" hafid123"><br>
+                    <input type="button" value="Login" onclick="Validate()" id="btn">
+            </div>
+    </center>
+    </div>
+</body>
+
+<style>
+    .login {
+        width: 350px;
+        height: 300px;
+        background-color: azure;
+        margin-top: 160px;
+        border-radius: 15px;
+        border-style: solid;
+        font-family: 'Roboto', sans-serif;
+        font-size: medium;
+
+    }
+
+    .login h2 {
+        margin-top: 15px;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .login input {
+        margin: 15px;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+        outline: none;
+        background-color: azure;
+    }
+
+    #btn {
+        width: 200px;
+        height: 34px;
+        background-color: #325CFF;
+        border: none;
+        color: white;
+        border-radius: 4px;
+        margin-top: 35px;
+    }
+
+    #btn:hover {
+        background-color: #1f4cff;
+    }
+
+    #pw {
+        width: 157px;
+    }
+</style>
 <script src="../warindo/package/dist/sweetalert2.all.min.js"></script>
 <script>
     function Validate() {
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        if (username == "hafid@gmail.com" && password == "hafid123") {
+        var email = document.getElementById("email").value;
+        var pw = document.getElementById("pw").value;
+        if (email == "hafid@gmail.com" && pw == "hafid123") {
             Swal.fire({
                 icon: 'success',
                 title: 'Login berhasil',
-                text: 'Selamat berbelanja',
+                text: 'Selamat berbelanja :)',
             }).then(function () {
                 window.location = "chekout.html";
             });
-        } else if (username == "" && password == "") {
+        } else if (email == "" && pw == "") {
             Swal.fire({
                 icon: 'warning',
-                title: 'Username & Password kosong',
-                text: 'Silahkan isi Username dan Password',
+                title: 'Email & Password kosong',
+                text: 'Silahkan isi Email dan Password',
             });
         } else Swal.fire({
             icon: 'error',
-            title: 'Oops, Username atau Password salah',
-            text: 'Silahkan isi Username dan Password dengan benar',
+            title: 'Oops, Email atau Password salah',
+            text: 'Silahkan isi Email dan Password dengan benar',
         });
 
     }
