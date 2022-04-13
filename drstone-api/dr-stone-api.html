@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Stone API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <center>
+        <div class="container">
+            <h1 class="mt-4">Dr.Stone API</h1>
+            <h3 class="mt-4">Characters</h3>
+            <div class="row" id="row">
+            </div>
+        </div>
+    </center>
+</body>
+<style>
+    #img {
+        border-radius: 25px;
+    }
+
+    .card {
+        border-radius: 25px;
+    }
+
+    .card-body h4 {
+        font-weight: bold;
+        font-family: 'Kanit', sans-serif;
+    }
+
+    .card-body p {
+        text-align: left;
+        margin-left: 5px;
+        line-height: 1.9;
+    }
+
+    h1 {
+        font-family: 'Kanit', sans-serif;
+        font-size: 300%;
+    }
+
+    h2 {
+        font-family: 'Kanit', sans-serif;
+        font-size: 300%;
+    }
+</style>
+
+
+
+
+<script>
+    fetch('https://drstone-api.herokuapp.com/api/characters').then(
+        function (response) {
+            if (response != 200) {
+                console.log("Oops Error " + response.status)
+            }
+            response.json().then(
+                function (data) {
+                    const char = data
+                    char.forEach(karakter => {
+                        document.getElementById('row').insertAdjacentHTML("beforeend",
+                            `<div class="col mt-4">
+                            <div class="card" style="width: 18rem;">
+  <img src="${karakter.image}" class="card-img-top" alt="..." id="img">
+  <div class="card-body">
+    <h4 class="mb-3">${karakter.name}</h4>
+    <p><b>Jenis Kelamin : </b>${karakter.sex}<br>
+        <b>Pekerjaan : </b>${karakter.occupation[0]}<br>
+        <b>Penampilan Pertama : </b>${karakter.firstAppearance}<br>
+        <b>Afiliasi : </b>${karakter.affiliation.formerly} / ${karakter.affiliation.current}<br>
+        </p>
+  </div>
+</div>
+</div>`
+                        )
+                    });
+
+
+                }
+            )
+        }
+    )
+</script>
+
+</html>
