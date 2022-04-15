@@ -12,25 +12,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
     <center>
         <div class="container">
-            <h1 class="mt-4">Dr.Stone API</h1>
-            <h3 class="mt-4">Characters</h3>
+            <h1 class="mt-4" data-aos="fade-down" data-aos-duration="1000">Dr.Stone API</h1>
+            <h3 class="mt-4" data-aos="fade-up" data-aos-delay="400">Characters</h3>
             <div class="row" id="row">
             </div>
-        </div>
+            <h3 class="mt-5" data-aos="fade-down" data-aos-delay="1000">List Episodes</h3>
+            <div class="row" id="row1">
+
+            </div>
     </center>
 </body>
 <style>
+    #card {
+        text-align: left;
+        border-radius: 1px;
+        border-radius: 15px;
+        box-shadow: 20px;
+    }
+
+    #card p {
+        line-height: 1.6;
+    }
+
+
     #img {
-        border-radius: 25px;
+        border-radius: 25px 25px 5px 5px;
     }
 
     .card {
-        border-radius: 25px;
+        border-radius: 25px 25px 10px 10px;
+        position: relative;
+    }
+
+    .card:hover {
+        top: -5px;
+        transform: translateZ(20px);
     }
 
     .card-body h4 {
@@ -53,15 +76,20 @@
         font-family: 'Kanit', sans-serif;
         font-size: 300%;
     }
+
+    h3 {
+        font-family: 'Kanit', sans-serif;
+    }
 </style>
-
-
-
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</script>
 <script>
     fetch('https://drstone-api.herokuapp.com/api/characters').then(
         function (response) {
-            if (response != 200) {
+            if (response.status != 200) {
                 console.log("Oops Error " + response.status)
             }
             response.json().then(
@@ -69,8 +97,10 @@
                     const char = data
                     char.forEach(karakter => {
                         document.getElementById('row').insertAdjacentHTML("beforeend",
-                            `<div class="col mt-4">
-                            <div class="card" style="width: 18rem;">
+                            `
+                            <div class="col mt-4" data-aos="fade-up" id="card">
+                                <div class="tilt">
+                            <div class="card shadow p hoverable"  style="width: 18rem;" >
   <img src="${karakter.image}" class="card-img-top" alt="..." id="img">
   <div class="card-body">
     <h4 class="mb-3">${karakter.name}</h4>
@@ -81,15 +111,47 @@
         </p>
   </div>
 </div>
+</div>
 </div>`
                         )
                     });
+                }
+            )
+        }
+    )
 
+    fetch('https://drstone-api.herokuapp.com/api/episodes').then(
+        function (response) {
+            if (response.status != 200) {
+                console.log("Error " + response.status)
+            }
+            response.json().then(
+                function (eps) {
+                    const ep = eps
+                    ep.forEach(dt => {
+                        document.getElementById('row1').insertAdjacentHTML("beforeend",
 
+                            `
+                                <div class="col m-3" data-aos="fade-up">
+                                    <div class="tilt">
+                <div class="card shadow" style="width: 18rem;" id="card1">
+                    <div class="card-body">
+                        <h5 class="card-title">${dt.id}. ${dt.name}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted mr-2">Episode : ${dt.episode}  <i class="bi bi-broadcast" style="color: red;"></i></h6>
+                        <p class="card-text"><b>Disiarkan(Japan) : </b>${dt.japanese_air_date} <br>
+                            <b>Disiarkan(English) : </b>${dt.english_air_date}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>`)
+                    });
                 }
             )
         }
     )
 </script>
+
 
 </html>
